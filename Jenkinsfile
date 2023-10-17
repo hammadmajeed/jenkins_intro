@@ -20,7 +20,7 @@ pipeline{
                 ){
                     echo "some script using the ${USER} created above"
                 }
-                echo "server credentials are ${SERVER_CREDENTIALS.usernameVariable}"
+                bat 'echo %SERVER_CREDENTIALS%'
             }
         }
     }
