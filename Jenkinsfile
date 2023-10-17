@@ -18,19 +18,8 @@ pipeline{
                         usernamePassword(credentials:'jenkins_user', usenameVariable:USER, passwordVariable:PWD)
                     ]
                 ){
-                    sh "some script using the ${USER} and ${PWD} created above"
+                    echo "some script using the ${USER} and ${PWD} created above"
                 }
-            }
-        }
-        post{
-            always{
-                // delete ghost/orphan files
-            }
-            success{
-
-            }
-            failure{
-
             }
         }
     }
