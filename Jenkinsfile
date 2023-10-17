@@ -15,7 +15,7 @@ pipeline{
             steps{
                 withCredentials(
                     [
-                        usernamePassword(credentials:'jenkins_user', usenameVariable:USER, passwordVariable:PWD)
+                        usernamePassword(credentials:'test_credentials', usenameVariable:USER, passwordVariable:PWD)
                     ]
                 ){
                     echo "some script using the ${USER} and ${PWD} created above"
