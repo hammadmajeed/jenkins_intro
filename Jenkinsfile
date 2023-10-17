@@ -18,7 +18,7 @@ pipeline{
                         usernamePassword(credentials:'test_credentials', usernameVariable:USER, passwordVariable:PWD)
                     ]
                 ){
-                    echo "some script using the ${USER} and ${PWD} created above"
+                    echo "some script using the ${USER} created above"
                 }
             }
         }
