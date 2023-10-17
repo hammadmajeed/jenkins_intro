@@ -20,7 +20,7 @@ pipeline{
                 ){
                     echo "some script using the ${USER} created above"
                 }
-                echo "server credentials are ${SERVER_CREDENTIALS.username}"
+                echo "server credentials are ${SERVER_CREDENTIALS.usernameVariable}"
             }
         }
     }
