@@ -2,7 +2,7 @@ pipeline{
     agent any
     environment{
         VERSION='1.0'
-        //SERVER_CREDENTIALS=credentials('jenkinsuser')
+        SERVER_CREDENTIALS=credentials('jenkinsuser')
     }
     stages{
         stage("build"){
@@ -20,6 +20,7 @@ pipeline{
                 ){
                     echo "some script using the ${USER} created above"
                 }
+                echo "server credentials are ${SERVER_CREDENTIALS}"
             }
         }
     }
