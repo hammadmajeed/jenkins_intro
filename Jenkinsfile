@@ -15,7 +15,7 @@ pipeline{
             steps{
                 withCredentials(
                     [
-                        usernamePassword(credentials:'test_credentials', USER: usernameVariable, PWD: passwordVariable)
+                        usernamePassword(credentials:'test_credentials', usernameVariable:USER, passwordVariable:PWD)
                     ]
                 ){
                     echo "some script using the ${USER} and ${PWD} created above"
