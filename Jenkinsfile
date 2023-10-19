@@ -10,15 +10,7 @@ pipeline{
         SERVER_CREDENTIALS=credentials('test_credentials')
      }
     stages{
-        stage("Hammads"){
-            steps{
-                script{
-                    gv.buildit()
-                }
-            }
-        }
-        stage("initialization"){
-            steps{
+        steps{
                 script{
                     gv = load "helper.groovy"
                 }
