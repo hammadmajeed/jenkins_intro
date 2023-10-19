@@ -1,10 +1,10 @@
 pipeline{
     agent any
-    parameters{
-        string(name: 'VERSION', defaultValue: '1.0', description: 'added for demo to the class')
-        choice(name: 'BUILD_VERSION', choices:['1.0','1.1','1.2'], description: 'this is drop down list')
-        booleanParam(name: 'DEPLOY', defaultValue: true, description: 'added to enable or disable test cases')
-    }
+    //parameters{
+    //    string(name: 'VERSION', defaultValue: '1.0', description: 'added for demo to the class')
+    //    choice(name: 'BUILD_VERSION', choices:['1.0','1.1','1.2'], description: 'this is drop down list')
+    //    booleanParam(name: 'DEPLOY', defaultValue: true, description: 'added to enable or disable test cases')
+    //}
     environment{
         VERSION='1.0'
         SERVER_CREDENTIALS=credentials('test_credentials')
@@ -19,11 +19,11 @@ pipeline{
         }
         stage("build"){
             steps{
-                script{
-                    gv.buildit()
-                }
-                //echo "Build Stage is executing"
-                //echo "Building version ${VERSION}"
+                //script{
+                //    gv.buildit()
+                //}
+                echo "Build Stage is executing"
+                echo "Building version ${VERSION}"
             }
         }
         stage( "test"){
@@ -33,17 +33,18 @@ pipeline{
             }
         }
         stage("Deploy"){
-            when{
-                    expression{
-                        params.DEPLOY == true
-                    }
-                }
+            //when{
+            //        expression{
+            //            params.DEPLOY == true
+            //        }
+            //    }
             steps{
                 withCredentials(
                     [
                         usernamePassword(credentialsId:'test_credentials', usernameVariable:'USER', passwordVariable:'PWD')
                     ]
                 ){
+                    echo "User name is ${SERVER_CREDENTIALS_USR}"
                     echo "some script using the ${USER} created above"
                 }
             }
