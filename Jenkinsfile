@@ -11,8 +11,10 @@ pipeline{
      }
     stages{
         stage("Hammads stage"){
-            script{
-                gv.buildit()
+            steps{
+                script{
+                    gv.buildit()
+                }
             }
         }
         stage("initialization"){
