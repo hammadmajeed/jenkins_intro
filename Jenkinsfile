@@ -10,6 +10,11 @@ pipeline{
         SERVER_CREDENTIALS=credentials('test_credentials')
      }
     stages{
+        stage("Hammads stage"){
+            script{
+                gv.buildit()
+            }
+        }
         stage("initialization"){
             steps{
                 script{
@@ -19,11 +24,11 @@ pipeline{
         }
         stage("build"){
             steps{
-                //script{
-                //    gv.buildit()
-                //}
-                echo "Build Stage is executing"
-                echo "Building version ${VERSION}"
+                script{
+                    gv.buildit()
+                }
+            //    echo "Build Stage is executing"
+            //    echo "Building version ${VERSION}"
             }
         }
         stage( "test"){
