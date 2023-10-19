@@ -23,12 +23,12 @@ pipeline{
             }
         }
         stage("Deploy"){
-            steps{
-                when{
+            when{
                     expression{
                         params.DEPLOY == true
                     }
                 }
+            steps{
                 withCredentials(
                     [
                         usernamePassword(credentialsId:'test_credentials', usernameVariable:'USER', passwordVariable:'PWD')
