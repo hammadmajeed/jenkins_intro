@@ -10,7 +10,7 @@ pipeline{
         SERVER_CREDENTIALS=credentials('test_credentials')
      }
     stages{
-        stage("Hammads stage"){
+        stage("Hammads"){
             steps{
                 script{
                     gv.buildit()
