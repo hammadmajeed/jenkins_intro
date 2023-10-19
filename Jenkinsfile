@@ -1,9 +1,14 @@
 pipeline{
     agent any
+    parameters{
+        string(name: 'VERSION', defaultValue: '1.0', description: 'added for demo to the class')
+        choice(name: 'BUILD_VERSION', choices:['1.0','1.1','1.2'], description: 'this is drop down list')
+        booleanParam(name: 'DEPLOY', defaultValue: true, description: 'added to enable or disable test cases')
+    }
     environment{
         VERSION='1.0'
         SERVER_CREDENTIALS=credentials('test_credentials')
-    }
+     }
     stages{
         stage("build"){
             steps{
@@ -11,8 +16,19 @@ pipeline{
                 echo "Building version ${VERSION}"
             }
         }
+        stage( "test"){
+            steps{
+                echo "Test Stage is executing"
+                echo "Building version ${VERSION}"
+            }
+        }
         stage("Deploy"){
             steps{
+                when{
+                    expression{
+                        params.DEPLOY == true
+                    }
+                }
                 withCredentials(
                     [
                         usernamePassword(credentialsId:'test_credentials', usernameVariable:'USER', passwordVariable:'PWD')
