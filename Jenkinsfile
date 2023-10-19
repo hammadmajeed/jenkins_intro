@@ -10,10 +10,20 @@ pipeline{
         SERVER_CREDENTIALS=credentials('test_credentials')
      }
     stages{
+        stage("initialization"){
+            steps{
+                script{
+                    gv = load "helper.groovy"
+                }
+            }
+        }
         stage("build"){
             steps{
-                echo "Build Stage is executing"
-                echo "Building version ${VERSION}"
+                script{
+                    gv.buildit()
+                }
+                //echo "Build Stage is executing"
+                //echo "Building version ${VERSION}"
             }
         }
         stage( "test"){
