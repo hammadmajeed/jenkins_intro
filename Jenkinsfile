@@ -12,7 +12,7 @@ pipeline{
     stages{
         stage("build"){
             steps{
-                echo "Build Stage is executing"
+                echo "Build Stage is executing...."
                 echo "Building version ${VERSION}"
             }
         }
