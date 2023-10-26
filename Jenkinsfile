@@ -10,11 +10,14 @@ pipeline{
         SERVER_CREDENTIALS=credentials('test_credentials')
      }
     stages{
+        stage("loading script")
+        {
         steps{
                 script{
                     gv = load "helper.groovy"
                 }
             }
+        }
         stage("build"){
             steps{
                 script{
