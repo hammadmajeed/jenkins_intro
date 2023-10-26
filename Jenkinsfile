@@ -15,7 +15,6 @@ pipeline{
                     gv = load "helper.groovy"
                 }
             }
-        }
         stage("build"){
             steps{
                 script{
